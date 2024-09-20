@@ -1,5 +1,5 @@
 package com.GroupAssessment2.PollingSystem.models;
 
-public class PoolingModels {
-
+public class PollingResults {
+    
 }
