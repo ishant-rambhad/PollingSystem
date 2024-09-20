@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Sample poll data (You can replace this with actual data from the backend)
+        const pollData = {
+            question: "What is your favorite programming language?",
+            options: [
+                { name: "JavaScript", votes: 120 },
+                { name: "Python", votes: 180 },
+                { name: "Java", votes: 80 },
+                { name: "C++", votes: 60 }
+            ]
+        };
+
+        function calculateResults() {
+            const totalVotes = pollData.options.reduce((sum, option) => sum + option.votes, 0);
+            return pollData.options.map(option => {
+                const percentage = ((option.votes / totalVotes) * 100).toFixed(2);
+                return { ...option, percentage };
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const results = calculateResults();
+            const resultsList = document.getElementById('resultsList');
+            let totalVotes = 0;
+
+            results.forEach(option => {
+                totalVotes += option.votes;
+                const listItem = document.createElement('li');
+                listItem.className = 'mb-4';
+
+                listItem.innerHTML = `
+                    <div class="flex justify-between">
+                        <span class="font-semibold">${option.name}</span>
+                        <span>${option.votes} votes (${option.percentage}%)</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div class="bg-blue-500 h-4 rounded-full" style="width: ${option.percentage}%"></div>
+                    </div>
+                `;
+                resultsList.appendChild(listItem);
+            });
+
+            document.getElementById('totalVotes').innerText = `Total Votes: ${totalVotes}`;
+        });
+    </script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-2xl font-bold mb-6 text-center">Poll Results</h2>
+
+        <!-- Poll Question -->
+        <div class="mb-6">
+            <h3 class="text-lg font-semibold mb-4">What is your favorite programming language?</h3>
+            <ul id="resultsList"></ul>
+        </div>
+
+        <!-- Total Votes -->
+        <div id="totalVotes" class="text-gray-700 font-bold text-center"></div>
+    </div>
+</body>
+</html>
