@@ -3,27 +3,15 @@ package com.GroupAssessment2.PollingSystem.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Admin_Cred")
-public class Admin_Cred {
-
+@Table(name = "admin_cred")
+public class AdminCred {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "email", nullable = false, unique = true)
+    private String username;
     private String email;
-
-    @Column(name = "password", nullable = false)
     private String password;
-
-    // Constructors
-    public Admin_Cred() {}
-
-    public Admin_Cred(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
 
     // Getters and Setters
     public Long getId() {
@@ -32,6 +20,14 @@ public class Admin_Cred {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
