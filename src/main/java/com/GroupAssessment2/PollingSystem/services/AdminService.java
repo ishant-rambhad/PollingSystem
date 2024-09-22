@@ -13,10 +13,21 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
+    // Register a new admin
     public AdminCred registerAdmin(AdminCred adminCred) {
         return adminRepository.save(adminCred);
     }
 
+    public boolean authenticateAdmin(String email, String password,String username) {
+        AdminCred admin = adminRepository.findByEmail(email);  // Use email instead of username
+        if (admin != null && admin.getPassword().equals(password) && admin.getUsername().equals(username)) {
+            return true;
+        }
+        return false;
+    }
+    
+
+    // Get all admins
     public List<AdminCred> getAllAdmins() {
         return adminRepository.findAll();
     }

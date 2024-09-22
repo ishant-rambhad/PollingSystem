@@ -1,20 +1,38 @@
 package com.GroupAssessment2.PollingSystem.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "user_details")
 public class UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is required")
     private String name;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
     private String email;
+
+    @NotBlank(message = "Mobile number is required")
     private String mobileNumber;
+
+    @NotBlank(message = "City is required")
     private String city;
+
+    @NotBlank(message = "Country is required")
     private String country;
+
+    @NotBlank(message = "Password is required")
     private String password;
+
+    @Transient  // Mark as transient to avoid persisting it to the database
+    @NotBlank(message = "Confirm password is required")
     private String confirmPassword;
 
     // Getters and Setters
