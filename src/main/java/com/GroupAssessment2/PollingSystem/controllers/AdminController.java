@@ -14,7 +14,6 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    // Render login page when accessed via GET
     @GetMapping("/login")
     public String showLoginPage(Model model) {
         model.addAttribute("adminCred", new AdminCred()); // Add an empty AdminCred object to the model

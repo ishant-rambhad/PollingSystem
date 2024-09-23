@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Polls</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="w-full max-w-4xl mx-auto mt-10">
+        <h2 class="text-2xl font-bold mb-6 text-center">All Polls</h2>
+        <table class="w-full table-auto">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Title</th>
+                    <th class="px-4 py-2">Question</th>
+                    <th class="px-4 py-2">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="poll : ${polls}">
+                    <td th:text="${poll.title}" class="border px-4 py-2"></td>
+                    <td th:text="${poll.question}" class="border px-4 py-2"></td>
+                    <td class="border px-4 py-2">
+                        <span th:text="${poll.option1}"></span>,
+                        <span th:text="${poll.option2}"></span>
+                        <!-- Add more options as needed -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

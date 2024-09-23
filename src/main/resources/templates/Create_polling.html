@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Poll</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        let optionCount = 2; // Start with two options
+        const maxOptions = 10; // Maximum number of options
+
+        function addOption() {
+            if (optionCount < maxOptions) {
+                optionCount++;
+                const newOption = document.createElement('input');
+                newOption.type = 'text';
+                newOption.name = 'option' + optionCount;
+                newOption.placeholder = 'Option ' + optionCount;
+                newOption.className = 'w-full px-3 py-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500';
+                document.getElementById('optionsList').appendChild(newOption);
+            } else {
+                alert('You can only add up to ' + maxOptions + ' options.');
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+<div class="min-h-screen bg-background text-foreground flex">
+        <!-- Sidebar -->
+        <aside class="bg-secondary text-secondary-foreground w-full md:w-64 p-4 md:block bg-gray-800 text-white">
+            <ul class="space-y-4">
+                <li><a href="/admin/dashboard" class="hover:underline">Homepage</a></li>
+                <li><a href="#" class="hover:underline">Results</a></li>
+                <li><a href="/admin/create_polling" class="hover:underline">Create Poll</a></li>
+            </ul>
+        </aside>
+
+        <nav class="bg-secondary text-secondary-foreground p-4 md:hidden bg-gray-800 text-white">
+            <button id="menuButton" class="focus:outline-none">
+                <img aria-hidden="true" alt="menu" src="https://openui.fly.dev/openui/24x24.svg?text=☰" />
+            </button>
+            <ul id="mobileMenu" class="hidden space-y-4 mt-4">
+                <li><a href="/admin/dashboard" class="hover:underline">Homepage</a></li>
+                <li><a href="#" class="hover:underline">Results</a></li>
+                <li><a href="/admin/create_polling" class="hover:underline">Create Poll</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-1 flex justify-center items-center p-6">
+            <div class="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-2xl font-bold mb-6 text-center">Create a Poll</h2>
+                <form action="/admin/PollCreate" method="post">
+                    <!-- Poll Title -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Poll Title</label>
+                        <input class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="text" id="title" name="title" placeholder="Enter poll title" required>
+                    </div>
+
+                    <!-- Poll Question -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="question">Poll Question</label>
+                        <input class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="text" id="question" name="question" placeholder="Enter poll question" required>
+                    </div>
+
+                    <!-- Poll Options -->
+                    <div id="optionsList" class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Poll Options</label>
+                        <input class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="text" name="option1" placeholder="Option 1" required>
+                        <input class="w-full px-3 py-2 mb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            type="text" name="option2" placeholder="Option 2" required>
+                    </div>
+
+                    <!-- Add Option Button -->
+                    <button type="button" class="w-full bg-gray-500 text-white font-bold py-2 px-4 mb-4 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        onclick="addOption()">Add Option</button>
+
+                    <!-- Submit Button -->
+                    <div class="flex items-center justify-between">
+                        <button class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" type="submit">Create Poll</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('menuButton').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+
+</html>

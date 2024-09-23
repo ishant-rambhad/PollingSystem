@@ -11,18 +11,39 @@ public class Poll {
 
     private String title;
     private String question;
+
+    @Column(nullable = true)
     private String option1;
+
+    @Column(nullable = true)
     private String option2;
+
+    @Column(nullable = true)
     private String option3;
+
+    @Column(nullable = true)
     private String option4;
+
+    @Column(nullable = true)
     private String option5;
+
+    @Column(nullable = true)
     private String option6;
+
+    @Column(nullable = true)
     private String option7;
+
+    @Column(nullable = true)
     private String option8;
+
+    @Column(nullable = true)
     private String option9;
+
+    @Column(nullable = true)
     private String option10;
 
     // Getters and Setters
+
     public Long getId() {
         return id;
     }

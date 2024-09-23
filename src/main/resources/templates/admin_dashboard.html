@@ -1,18 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/css/background.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 text-white">
-    <div class="flex justify-center items-center h-screen">
-        <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
-            <h2 class="text-black text-2xl font-bold mb-6 text-center">Welcome Admin</h2>
-            <p class="text-center">You have successfully logged in!</p>
-        </div>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 240 10% 3.9%;
+--card: 0 0% 100%;
+--card-foreground: 240 10% 3.9%;
+--popover: 0 0% 100%;
+--popover-foreground: 240 10% 3.9%;
+--primary: 142.1 76.2% 36.3%;
+--primary-foreground: 355.7 100% 97.3%;
+--secondary: 240 4.8% 95.9%;
+--secondary-foreground: 240 5.9% 10%;
+--muted: 240 4.8% 95.9%;
+--muted-foreground: 240 3.8% 46.1%;
+--accent: 240 4.8% 95.9%;
+--accent-foreground: 240 5.9% 10%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 0 0% 98%;
+--border: 240 5.9% 90%;
+--input: 240 5.9% 90%;
+--ring: 142.1 76.2% 36.3%;
+				}
+				.dark {
+					--background: 20 14.3% 4.1%;
+--foreground: 0 0% 95%;
+--popover: 0 0% 9%;
+--popover-foreground: 0 0% 95%;
+--card: 24 9.8% 10%;
+--card-foreground: 0 0% 95%;
+--primary: 142.1 70.6% 45.3%;
+--primary-foreground: 144.9 80.4% 10%;
+--secondary: 240 3.7% 15.9%;
+--secondary-foreground: 0 0% 98%;
+--muted: 0 0% 15%;
+--muted-foreground: 240 5% 64.9%;
+--accent: 12 6.5% 15.1%;
+--accent-foreground: 0 0% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 85.7% 97.3%;
+--border: 240 3.7% 15.9%;
+--input: 240 3.7% 15.9%;
+--ring: 142.4 71.8% 29.2%;
+				}
+			}
+		</style>
+  </head>
+  <body>
+    
+
+<div class="min-h-screen bg-background text-foreground flex">
+  <aside class="bg-secondary text-secondary-foreground w-64 p-4 hidden md:block">
+    <ul class="space-y-4">
+      <li><a href="#" class="hover:underline">Homepage</a></li>
+      <li><a href="#" class="hover:underline">Results</a></li>
+      <li><a href="/admin/create_polling" class="hover:underline">Create Poll</a></li>
+    </ul>
+  </aside>
+
+  <nav class="bg-secondary text-secondary-foreground p-4 md:hidden">
+    <button id="menuButton" class="focus:outline-none">
+      <img aria-hidden="true" alt="menu" src="https://openui.fly.dev/openui/24x24.svg?text=☰" />
+    </button>
+    <ul id="mobileMenu" class="hidden space-y-4 mt-4">
+      <li><a href="#" class="hover:underline">Homepage</a></li>
+      <li><a href="#" class="hover:underline">Results</a></li>
+      <li><a href="#" class="hover:underline">Create Poll</a></li>
+    </ul>
+  </nav>
+
+  <div class="flex-1 p-6">
+    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-card p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Card Title 1</h2>
+        <p class="text-muted-foreground">This is a description for card 1.</p>
+      </div>
+
+      <div class="bg-card p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Card Title 2</h2>
+        <p class="text-muted-foreground">This is a description for card 2.</p>
+      </div>
+
+      <div class="bg-card p-4 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2">Card Title 3</h2>
+        <p class="text-muted-foreground">This is a description for card 3.</p>
+      </div>
     </div>
-</body>
+  </div>
+</div>
+
+<script>
+  document.getElementById('menuButton').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+
+  </body>
 </html>

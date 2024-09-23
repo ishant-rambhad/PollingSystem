@@ -71,12 +71,19 @@ public class UserController {
         boolean isAuthenticated = userService.authenticateUser(userCred.getEmail(), userCred.getPassword(), userCred.getName());
 
         if (isAuthenticated) {
-            return "redirect:/user/dashboard"; // Redirect to user dashboard on success
+            return "redirect:/users/dashboard"; // Redirect to user dashboard on success
         } else {
             model.addAttribute("error", "Invalid credentials");
             return "User_Login"; // Re-render login page with error
         }
     }
+
+    @GetMapping("/dashboard")
+    public String showUserDashboard() {
+        return "user_dashboard"; // This would be your dashboard HTML page
+    }
+
+    
 
     // Get a list of all users
     @GetMapping("/all")

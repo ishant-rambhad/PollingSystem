@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PollIt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        
+        @keyframes pollAnimate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-poll {
+            animation: pollAnimate 1s infinite;
+        }
+
+        /* Image hover animation */
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #2e7d32; /* Dark green */
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Poll bar styling */
+        #poll-bar div {
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-green-500 text-white">
+
+    <!-- Header with PollIt name aligned to the left -->
+    <header>
+        <div class="navbar-container container mx-auto">
+            <h1 class="text-left text-2xl font-bold">PollIt</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="admin/login">Create Poll</a>
+                <a href="/results">Results</a>
+                <a href="/about">About</a>
+            </nav>
+        </div>
+    </header>
+    <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:pt-28 lg:pb-32 lg:px-8">
+        <h1 class="text-center sm:text-left text-5xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl sm:ml-12">
+            <span class="block text-white">Answer a poll</span>
+            <span class="block text-green-300">in seconds</span>
+        </h1>
+        <p class="mt-6 max-w-sm mx-auto sm:ml-12 text-center sm:text-left text-lg sm:text-xl text-green-200 sm:max-w-2xl">
+            Want to see how you stands on a crowd and which subjects involve your same opinion as like others !!
+        </p>
+        <div class="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-begin">
+            <div class="sm:ml-12 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <a href="/users/login">
+                    <button class="mt-6 px-8 py-4 bg-white text-green-700 font-bold rounded-full shadow-lg hover:bg-green-200 transition duration-300">
+                        Vote Now
+                    </button>
+                </a>
+        
+                </a>
+                <button class="mt-6 px-8 py-4 bg-white text-green-700 font-bold rounded-full shadow-lg hover:bg-green-200 transition duration-300">
+                    View Examples
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <!-- Main section -->
+    <section class="container mx-auto px-6 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <!-- Image with hover animation -->
+            <div class="hover-scale">
+                <img src="opinion.webp" alt="Poll Image" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+            <!-- Text block with animation -->
+            <div>
+                <h2 class="text-4xl font-extrabold animate-poll">Your Opinion Matters!</h2>
+                <p class="mt-4 text-lg">Join the poll and see what others think. Make your voice heard with just a click. Polling is fast, easy, and important.</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Poll Section -->
+    <section class="py-12 bg-white text-green-700 mt-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold">Live Poll Results</h2>
+            <div class="mt-6">
+                <div id="poll-bar" class="w-full bg-gray-300 rounded-full h-8">
+                    <div class="bg-green-500 h-8 rounded-full" style="width: 50%"></div>
+                </div>
+                <p class="mt-4 font-extrabold text-xl">50% voted YES!</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+<!-- Footer -->
+<footer style="background-color: #4CAF50; padding: 20px; text-align: center; color: white;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <!-- Footer Content -->
+      <div style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: flex-start;">
+        
+        <!-- Footer Left Section -->
+        <div style="flex: 1; text-align: left; padding: 10px; min-width: 250px;">
+          <h2 style="margin-bottom: 10px;">Pollit</h2>
+          <p>Your trusted platform for accurate polling data and public opinion trends.</p>
+        </div>
+  
+        <!-- Footer Center Section (Navigation Links) -->
+        <div style="flex: 1; text-align: center; padding: 10px; min-width: 250px;">
+          <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 10px;">
+              <a href="#" style="color: white; text-decoration: none;">Home</a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="#" style="color: white; text-decoration: none;">About</a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="#" style="color: white; text-decoration: none;">Polls</a>
+            </li>
+            <li style="margin-bottom: 10px;">
+              <a href="#" style="color: white; text-decoration: none;">Contact</a>
+            </li>
+          </ul>
+        </div>
+  
+        <!-- Footer Right Section (Social Media Icons) -->
+        <div style="flex: 1; text-align: right; padding: 10px; min-width: 250px;">
+          <a href="#" style="color: white; text-decoration: none; margin-right: 10px;">
+            <img src="facebook-icon.png" alt="Facebook" style="width: 24px; vertical-align: middle;"> Facebook
+          </a>
+          <a href="#" style="color: white; text-decoration: none; margin-left: 10px;">
+            <img src="twitter-icon.png" alt="Twitter" style="width: 24px; vertical-align: middle;"> Twitter
+          </a>
+        </div>
+  
+      </div>
+  
+      <!-- Copyright Section -->
+      <div style="text-align: center; padding-top: 10px;">
+        <p>&copy; 2024 Pollit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+    <script>
+        // Basic poll bar animation
+        let pollPercentage = 50; // Starting percentage for demo
+        const pollBar = document.getElementById('poll-bar').children[0];
+
+        // Simulate poll bar filling
+        setInterval(() => {
+            pollPercentage = (pollPercentage + 1) % 100;
+            pollBar.style.width = pollPercentage + '%';
+        }, 2000);
+    </script>
+
+</body>
+</html>
