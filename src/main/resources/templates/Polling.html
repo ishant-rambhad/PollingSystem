@@ -10,46 +10,55 @@
     <div class="w-full max-w-lg bg-white rounded-lg shadow-md p-8">
         <h2 class="text-2xl font-bold mb-6 text-center">Vote in the Poll</h2>
 
-        <!-- Poll Question -->
-        <div class="mb-6">
-            <h3 class="text-lg font-semibold mb-4">What is your favorite programming language?</h3>
+        <div th:each="poll : ${polls}" class="mb-6">
+            <h3 class="text-lg font-semibold mb-4" th:text="${poll.question}">Poll Question</h3>
 
-            <!-- Poll Options -->
-            <form id="pollForm">
-                <div class="flex items-center mb-4">
-                    <input id="option1" name="poll" type="radio" value="JavaScript" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300" required>
-                    <label for="option1" class="ml-3 text-gray-700">JavaScript</label>
+            <form th:action="@{/users/polls/{email}/vote(email=${email})}" method="post">
+                <input type="hidden" name="pollId" th:value="${poll.id}" />
+                <div class="flex items-center mb-4" th:if="${poll.option1 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option1}" class="h-4 w-4 text-blue-500" required> 
+                    <label th:text="${poll.option1}" class="ml-3 text-gray-700">Option 1</label>
                 </div>
-                <div class="flex items-center mb-4">
-                    <input id="option2" name="poll" type="radio" value="Python" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300" required>
-                    <label for="option2" class="ml-3 text-gray-700">Python</label>
+                <div class="flex items-center mb-4" th:if="${poll.option2 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option2}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option2}" class="ml-3 text-gray-700">Option 2</label>
                 </div>
-                <div class="flex items-center mb-4">
-                    <input id="option3" name="poll" type="radio" value="Java" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300" required>
-                    <label for="option3" class="ml-3 text-gray-700">Java</label>
+                <div class="flex items-center mb-4" th:if="${poll.option3 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option3}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option3}" class="ml-3 text-gray-700">Option 3</label>
                 </div>
-                <div class="flex items-center mb-4">
-                    <input id="option4" name="poll" type="radio" value="C++" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300" required>
-                    <label for="option4" class="ml-3 text-gray-700">C++</label>
+                <div class="flex items-center mb-4" th:if="${poll.option4 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option4}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option4}" class="ml-3 text-gray-700">Option 4</label>
                 </div>
-                <!-- Submit Button -->
-                <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Submit Vote</button>
+                <div class="flex items-center mb-4" th:if="${poll.option5 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option5}" class="h-4 w-4 text-blue-500" required> 
+                    <label th:text="${poll.option5}" class="ml-3 text-gray-700">Option 5</label>
+                </div>
+                <div class="flex items-center mb-4" th:if="${poll.option6 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option6}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option6}" class="ml-3 text-gray-700">Option 6</label>
+                </div>
+                <div class="flex items-center mb-4" th:if="${poll.option7 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option7}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option7}" class="ml-3 text-gray-700">Option 7</label>
+                </div>
+                <div class="flex items-center mb-4" th:if="${poll.option8 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option8}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option8}" class="ml-3 text-gray-700">Option 8</label>
+                </div>
+                <div class="flex items-center mb-4" th:if="${poll.option9 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option9}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option9}" class="ml-3 text-gray-700">Option 9</label>
+                </div>
+                <div class="flex items-center mb-4" th:if="${poll.option10 != null}">
+                    <input type="radio" name="pollOption" th:value="${poll.option10}" class="h-4 w-4 text-blue-500" required>
+                    <label th:text="${poll.option10}" class="ml-3 text-gray-700">Option 10</label>
+                </div>
+            
+                <button type="submit" class="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600">Submit Vote</button>
             </form>
         </div>
-
     </div>
-
-    <!-- Optional JavaScript for handling form submission -->
-    <script>
-        const pollForm = document.getElementById('pollForm');
-        pollForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const selectedOption = document.querySelector('input[name="poll"]:checked');
-            if (selectedOption) {
-                alert('You voted for: ' + selectedOption.value);
-                // You can submit the form data to a server here
-            }
-        });
-    </script>
 </body>
 </html>

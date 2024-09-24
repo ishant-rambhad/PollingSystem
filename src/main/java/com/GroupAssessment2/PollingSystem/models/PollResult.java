@@ -9,10 +9,15 @@ public class PollResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "poll_id", nullable = false)
+    private Poll poll;
+
     private String title;
     private String question;
     private String username;
     private String email;
+
     private String option1;
     private String option2;
     private String option3;
@@ -24,16 +29,16 @@ public class PollResult {
     private String option9;
     private String option10;
 
-    private String countoption1;
-    private String countoption2;
-    private String countoption3;
-    private String countoption4;
-    private String countoption5;
-    private String countoption6;
-    private String countoption7;
-    private String countoption8;
-    private String countoption9;
-    private String countoption10;
+    private int countoption1 = 0;
+    private int countoption2 = 0;
+    private int countoption3 = 0;
+    private int countoption4 = 0;
+    private int countoption5 = 0;
+    private int countoption6 = 0;
+    private int countoption7 = 0;
+    private int countoption8 = 0;
+    private int countoption9 = 0;
+    private int countoption10 = 0;
 
     // Getters and Setters
     public Long getId() {
@@ -42,6 +47,14 @@ public class PollResult {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Poll getPoll() {
+        return poll;
+    }
+
+    public void setPoll(Poll poll) {
+        this.poll = poll;
     }
 
     public String getTitle() {
@@ -156,83 +169,83 @@ public class PollResult {
         this.option10 = option10;
     }
 
-    public String getCountoption1() {
+    public int getCountoption1() {
         return countoption1;
     }
 
-    public void setCountoption1(String countoption1) {
+    public void setCountoption1(int countoption1) {
         this.countoption1 = countoption1;
     }
 
-    public String getCountoption2() {
+    public int getCountoption2() {
         return countoption2;
     }
 
-    public void setCountoption2(String countoption2) {
+    public void setCountoption2(int countoption2) {
         this.countoption2 = countoption2;
     }
 
-    public String getCountoption3() {
+    public int getCountoption3() {
         return countoption3;
     }
 
-    public void setCountoption3(String countoption3) {
+    public void setCountoption3(int countoption3) {
         this.countoption3 = countoption3;
     }
 
-    public String getCountoption4() {
+    public int getCountoption4() {
         return countoption4;
     }
 
-    public void setCountoption4(String countoption4) {
+    public void setCountoption4(int countoption4) {
         this.countoption4 = countoption4;
     }
 
-    public String getCountoption5() {
+    public int getCountoption5() {
         return countoption5;
     }
 
-    public void setCountoption5(String countoption5) {
+    public void setCountoption5(int countoption5) {
         this.countoption5 = countoption5;
     }
 
-    public String getCountoption6() {
+    public int getCountoption6() {
         return countoption6;
     }
 
-    public void setCountoption6(String countoption6) {
+    public void setCountoption6(int countoption6) {
         this.countoption6 = countoption6;
     }
 
-    public String getCountoption7() {
+    public int getCountoption7() {
         return countoption7;
     }
 
-    public void setCountoption7(String countoption7) {
+    public void setCountoption7(int countoption7) {
         this.countoption7 = countoption7;
     }
 
-    public String getCountoption8() {
+    public int getCountoption8() {
         return countoption8;
     }
 
-    public void setCountoption8(String countoption8) {
+    public void setCountoption8(int countoption8) {
         this.countoption8 = countoption8;
     }
 
-    public String getCountoption9() {
+    public int getCountoption9() {
         return countoption9;
     }
 
-    public void setCountoption9(String countoption9) {
+    public void setCountoption9(int countoption9) {
         this.countoption9 = countoption9;
     }
 
-    public String getCountoption10() {
+    public int getCountoption10() {
         return countoption10;
     }
 
-    public void setCountoption10(String countoption10) {
+    public void setCountoption10(int countoption10) {
         this.countoption10 = countoption10;
     }
 }

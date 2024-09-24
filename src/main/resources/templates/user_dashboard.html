@@ -99,13 +99,14 @@
     
 
 <div class="min-h-screen bg-background text-foreground flex">
-  <aside class="bg-secondary text-secondary-foreground w-64 p-4 hidden md:block">
-    <ul class="space-y-4">
-      <li><a href="#" class="hover:underline">Homepage</a></li>
-      <li><a href="#" class="hover:underline">Results</a></li>
-      <li><a href="/admin/create_polling" class="hover:underline">Create Poll</a></li>
-    </ul>
-  </aside>
+	<aside class="bg-secondary text-secondary-foreground w-64 p-4 hidden md:block">
+		<ul class="space-y-4">
+		  <li><a th:href="@{/users/dashboard/{email}(email=${email})}" class="hover:underline">Homepage</a></li>
+		  <li><a href="#" class="hover:underline">Results</a></li>
+		  <li><a th:href="@{/users/polls/{email}(email=${email})}" class="hover:underline">Vote Now</a></li>
+		</ul>
+	  </aside>
+	  
 
   <nav class="bg-secondary text-secondary-foreground p-4 md:hidden">
     <button id="menuButton" class="focus:outline-none">
@@ -143,6 +144,12 @@
     const mobileMenu = document.getElementById('mobileMenu');
     mobileMenu.classList.toggle('hidden');
   });
+  document.getElementById('menuButton').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenu.classList.toggle('visible');
+    mobileMenu.classList.toggle('hidden');
+});
+
 </script>
 
 

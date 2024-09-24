@@ -16,10 +16,13 @@ public class PollResultController {
     private PollResultService pollResultService;
 
     @PostMapping("/submit")
-    public ResponseEntity<PollResult> submitPollResult(@RequestBody PollResult pollResult) {
-        PollResult savedResult = pollResultService.submitPollResult(pollResult);
+    public ResponseEntity<PollResult> submitPollResult(@RequestParam String email, 
+                                                       @RequestParam String selectedOption, 
+                                                       @RequestParam Long pollId) {
+        PollResult savedResult = pollResultService.submitPollResult(email, selectedOption, pollId);
         return ResponseEntity.ok(savedResult);
     }
+
 
     @GetMapping("/all")
     public List<PollResult> getAllPollResults() {
