@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,17 @@
                     <td th:text="${poll.title}" class="border px-4 py-2"></td>
                     <td th:text="${poll.question}" class="border px-4 py-2"></td>
                     <td class="border px-4 py-2">
+                        
                         <span th:text="${poll.option1}"></span>,
                         <span th:text="${poll.option2}"></span>
-                        <!-- Add more options as needed -->
+                        <span th:text="${poll.option3}"></span>
+                        <span th:text="${poll.option4}"></span>
+                        <span th:text="${poll.option5}"></span>
+                        <span th:text="${poll.option6}"></span>
+                        <span th:text="${poll.option7}"></span>
+                        <span th:text="${poll.option8}"></span>
+                        <span th:text="${poll.option9}"></span>
+                        <span th:text="${poll.option10}"></span>
                     </td>
                 </tr>
             </tbody>

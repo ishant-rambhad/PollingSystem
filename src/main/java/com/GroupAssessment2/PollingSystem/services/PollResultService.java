@@ -29,7 +29,7 @@ public class PollResultService {
 
         // Fetch the poll by pollId
         Poll poll = pollRepository.findById(pollId)
-            .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
 
         // Create a new PollResult
         PollResult pollResult = new PollResult();
@@ -41,7 +41,7 @@ public class PollResultService {
 
         // Set the options
         pollResult.setOption1(poll.getOption1());
-        
+
         pollResult.setOption2(poll.getOption2());
         pollResult.setOption3(poll.getOption3());
         pollResult.setOption4(poll.getOption4());
@@ -94,5 +94,68 @@ public class PollResultService {
 
     public List<PollResult> getAllPollResults() {
         return pollResultRepository.findAll();
+    }
+
+    public String getPollQuestion(Long pollId) {
+        Poll poll = pollRepository.findById(pollId)
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+        return poll.getQuestion();
+    }
+
+    public String getAllPollOptions(Long pollId) {
+        Poll poll = pollRepository.findById(pollId)
+                .orElseThrow(() -> new IllegalArgumentException("Poll not found"));
+        StringBuilder allOptions = new StringBuilder();
+        if (poll.getOption1() != null) {
+            allOptions.append(poll.getOption1()).append(", ");
+        }
+        if (poll.getOption2() != null) {
+            allOptions.append(poll.getOption2()).append(", ");
+        }
+        if (poll.getOption3() != null) {
+            allOptions.append(poll.getOption3()).append(", ");
+        }
+        if (poll.getOption4() != null) {
+            allOptions.append(poll.getOption4()).append(", ");
+        }
+        if (poll.getOption5() != null) {
+            allOptions.append(poll.getOption5()).append(", ");
+        }
+        if (poll.getOption6() != null) {
+            allOptions.append(poll.getOption6()).append(", ");
+        }
+        if (poll.getOption7() != null) {
+            allOptions.append(poll.getOption7()).append(", ");
+        }
+        if (poll.getOption8() != null) {
+            allOptions.append(poll.getOption8()).append(", ");
+        }
+        if (poll.getOption9() != null) {
+            allOptions.append(poll.getOption9()).append(", ");
+        }
+        if (poll.getOption10() != null) {
+            allOptions.append(poll.getOption10());
+        }
+        // Remove the last ", " if present
+        if (allOptions.length() > 2) {
+            allOptions.delete(allOptions.length() - 2, allOptions.length());
+        }
+        return allOptions.toString();
+    }
+
+    public int getTotalVotes(Long pollId) {
+        List<PollResult> pollResults = pollResultRepository.findAll();
+        int totalVotes = 0;
+        for (PollResult pollResult : pollResults) {
+            if (pollResult.getId().equals(pollId)) {
+                totalVotes += pollResult.getCountoption1() + pollResult.getCountoption2() + pollResult.getCountoption3()
+                        +
+                        pollResult.getCountoption4() + pollResult.getCountoption5() + pollResult.getCountoption6() +
+                        pollResult.getCountoption7() + pollResult.getCountoption8() + pollResult.getCountoption9() +
+                        pollResult.getCountoption10();
+            }
+        }
+        System.out.println(totalVotes);
+        return totalVotes;
     }
 }

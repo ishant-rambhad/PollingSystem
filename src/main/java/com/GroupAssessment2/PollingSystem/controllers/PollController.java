@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller  // Change to @Controller to render HTML views
+@Controller 
 @RequestMapping("/admin")
 public class PollController {
 
