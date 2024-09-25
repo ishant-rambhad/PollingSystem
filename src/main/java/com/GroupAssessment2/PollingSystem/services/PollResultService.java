@@ -158,4 +158,13 @@ public class PollResultService {
         System.out.println(totalVotes);
         return totalVotes;
     }
+
+    public String formatVotesAndPercentage(int votes, int totalVotes) {
+        if (totalVotes == 0) {
+            return votes + " votes (0%)";
+        }
+        double percentage = (double) votes / totalVotes * 100;
+        return votes + " votes (" + String.format("%.2f", percentage) + "%)";
+    }
+    
 }

@@ -248,4 +248,9 @@ public class PollResult {
     public void setCountoption10(int countoption10) {
         this.countoption10 = countoption10;
     }
+    public int getTotalVotes() {
+        return countoption1 + countoption2 + countoption3 + countoption4 + countoption5 +
+               countoption6 + countoption7 + countoption8 + countoption9 + countoption10;
+    }
+    
 }

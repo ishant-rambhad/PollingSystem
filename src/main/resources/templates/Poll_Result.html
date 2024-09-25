@@ -17,13 +17,13 @@
                 <!-- Loop through each poll result to show options and their progress bar -->
                 <li th:each="result, iterStat : ${pollResults}" class="mb-4">
                     <div class="flex justify-between mb-2">
-                        <!-- Split and display options from the allPollOptions string -->
-                        <span th:each="option, index : ${#strings.split(allPollOptions, ', ')}">
+                        <!-- Loop through the pollOptionsList passed from the controller -->
+                        <span th:each="option, index : ${pollOptionsList}">
                             <span th:text="${option}"></span>
                         </span>
                         
                         <!-- Votes and Percentage -->
-                        <span th:text="${result.votes} + ' votes (' + ${result.percentage} + '%)'">Votes and Percentage</span>
+                        <span th:text="${results} + ' votes (' + ${results} + '%)'">Votes and Percentage</span>
                     </div>
 
                     <!-- Progress Bar (width determined by percentage) -->
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Total Votes -->
-        <div id="totalVotes" class="text-gray-700 font-bold text-center" th:text="'Total Votes: ' + ${totalVotes}">Total Votes</div>
+        <!-- <div id="totalVotes" class="text-gray-700 font-bold text-center" th:text="'Total Votes: ' + ${totalVotes}">Total Votes</div> -->
     </div>
 </body>
 </html>
