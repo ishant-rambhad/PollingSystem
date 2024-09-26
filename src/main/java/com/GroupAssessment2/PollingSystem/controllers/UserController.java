@@ -97,7 +97,8 @@ public class UserController {
 
     @GetMapping("/polls/{email}")
     public String showUserPolls(@PathVariable String email, Model model) {
-        List<Poll> polls = pollService.getAllPolls(); // Fetch all polls from the database
+        List<Poll> polls = pollService.getAllPolls();
+        System.out.println(polls); // Fetch all polls from the database
         model.addAttribute("email", email);
         model.addAttribute("polls", polls); // Add the polls data to the model
         return "Polling"; // Render the Polling view
